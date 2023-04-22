@@ -88,6 +88,6 @@ If you are going to develop over this template, please read the wiki for further
 - `git init`
 
 # About
-This repo is part of [SM2023 Internship: "Fulana"](https://gitlab.eso.org/vlizana/sm2023-fulana/-/wikis/home), done in summer of 2023 at PSW, Paranal Observatory.
+This repo is part of [SM2023 Internship: "Fulana"](https://gitlab.eso.org/vlizana/sm2023-fulana/-/wikis/home), done in summer of 2023 at PSW, Paranal Observatory
 
 
