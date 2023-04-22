@@ -1,0 +1,47 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+node_modules/
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+# UNCOMMENT BUILD FOR PRODUCTION
+# build/
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Compiled and others
+*__pycache__*
+
+# DB
+db.sqlite3
+
+# static
+# UNCOMMENT BUILD FOR PRODUCTION
+# static
+
+# Static files (collectstatic)
+static_root
+
+# process_secrets
+*.b64.txt
+
+# Virtual Enviroment
+/template-env/
+venv/
+
+# git
+.git
