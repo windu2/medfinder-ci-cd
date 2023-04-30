@@ -12,8 +12,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 
-import ldap
-from django_auth_ldap.config import LDAPSearch
 
 from credentials import secrets
 
