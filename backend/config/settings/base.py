@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     # We add the "todo" application, you should replace with your app name
     'todo',
+    'medico',
 ]
 
 MIDDLEWARE = [

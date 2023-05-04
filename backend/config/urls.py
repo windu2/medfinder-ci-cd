@@ -30,5 +30,6 @@ urlpatterns = [
     # this is for link the /api url to the todo app
     path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls')),
-    path('api/auth/', include('auth.urls'))
+    path('api/auth/', include('auth.urls')),
+    path('api/medicos/', include('medico.urls'))
 ]
