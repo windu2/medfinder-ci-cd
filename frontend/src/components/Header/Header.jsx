@@ -40,15 +40,15 @@ const Header = (args) => {
             </>
           ) : (
             <>
-              <NavItem>
+              {/* <NavItem>
                 <NavLink href="/register" active className="btn btn-secondary">
                   Register
                 </NavLink>
-              </NavItem>
+              </NavItem> */}
               &nbsp;
               <NavItem>
                 <NavLink href="/login" active className="btn btn-success">
-                  Login
+                  Login Administrador
                 </NavLink>
               </NavItem>
             </>
