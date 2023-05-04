@@ -9,7 +9,14 @@ const Header = (args) => {
     <div>
       <Navbar {...args}>
         <NavbarBrand href="/">
-          <h1>AppName</h1>
+          <img
+            alt="logo"
+            src="/MedfinderLogo.png"
+            style={{
+              // height: 40,
+              width: 300
+            }}
+          />
         </NavbarBrand>
 
         <Nav>
