@@ -9,7 +9,14 @@ const Header = (args) => {
     <div>
       <Navbar {...args}>
         <NavbarBrand href="/">
-          <h1>AppName</h1>
+          <img
+            alt="logo"
+            src="/MedfinderLogo.png"
+            style={{
+              // height: 40,
+              width: 300
+            }}
+          />
         </NavbarBrand>
 
         <Nav>
@@ -33,15 +40,15 @@ const Header = (args) => {
             </>
           ) : (
             <>
-              <NavItem>
+              {/* <NavItem>
                 <NavLink href="/register" active className="btn btn-secondary">
                   Register
                 </NavLink>
-              </NavItem>
+              </NavItem> */}
               &nbsp;
               <NavItem>
                 <NavLink href="/login" active className="btn btn-success">
-                  Login
+                  Login Administrador
                 </NavLink>
               </NavItem>
             </>

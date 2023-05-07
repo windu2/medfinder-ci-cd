@@ -20,7 +20,7 @@ class App extends Component {
         <div className="flex flex-col min-h-screen overflow-hidden">
           {/* AuthProvider makes that every person is logged, and can be used in every other Route */}
           <AuthProvider>
-            <Header color='info'/>
+            <Header/>
             <Routes>
               {/* This path (*) prevents to navigate every other page that is not register in the project */}
               <Route path="/" element={<IndexView />} />
