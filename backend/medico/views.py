@@ -27,7 +27,7 @@ def getMedicos(request):
 
 @api_view(['GET'])
 def getMedico(request, rut):
-    medico = Medico.objects.get(rut=rut)
+    medico = Medico.objects.get(id=rut)
     serializer = MedicoSerializer(medico, many=False)
     return Response(serializer.data)
 
@@ -60,7 +60,7 @@ def postMedico(request):
 @api_view(['PUT'])
 def putMedico(request, rut):
     data = request.data
-    medico = Medico.objects.get(rut=rut)
+    medico = Medico.objects.get(id=rut)
     new_rut = data['rut']
     # En caso de que el rut se mantenga no tengo conflictos
     if(new_rut == rut):
@@ -84,7 +84,7 @@ def putMedico(request, rut):
 @api_view(['DELETE'])
 def deleteMedico(request,rut):
     try:
-        medico = Medico.objects.get(rut=rut)
+        medico = Medico.objects.get(id=rut)
         medico.delete()
         return Response("Medico Eliminado")  
     except:
