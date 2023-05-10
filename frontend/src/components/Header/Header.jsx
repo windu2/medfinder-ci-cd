@@ -23,9 +23,6 @@ const Header = (args) => {
                 ""
               )}
               <NavItem>
-                <NavLink href="/todo">Todo</NavLink>
-              </NavItem>
-              <NavItem>
                 <Button onClick={logoutUser} className="btn btn-danger">
                   Logout
                 </Button>

@@ -41,7 +41,7 @@ export const AuthProvider = ({ children }) => {
       setAuthTokens(data);
       setUser(jwt_decode(data.access));
       localStorage.setItem("authTokens", JSON.stringify(data));
-      navigate("/todo");
+      navigate("/admin");
     } else if (response.status === 401) {
       alert("Bad credentials, try again");
     } else {
