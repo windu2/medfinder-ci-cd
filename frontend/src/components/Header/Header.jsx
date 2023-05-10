@@ -6,10 +6,10 @@ import { useAuthContext } from "../../context/useAuthContext";
 const Header = (args) => {
   const { user, logoutUser } = useAuthContext();
   return (
-    <div>
-      <Navbar {...args}>
-        <NavbarBrand href="/">
-          <h1>AppName</h1>
+    <div >
+      <Navbar style={{backgroundColor:"#282828"}} >
+        <NavbarBrand href="/" >
+          <h1 style={{color:"white", paddingLeft:"10px"}}>MedFinder</h1>
         </NavbarBrand>
 
         <Nav>

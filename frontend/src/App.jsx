@@ -1,6 +1,11 @@
 import React, { Component } from "react";
+//theme
+import "primereact/resources/themes/lara-light-indigo/theme.css";     
+    
+//core
+import "primereact/resources/primereact.min.css";    
 
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useParams } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import Header from "./components/Header/Header";
 import TodoView from "./views/todo/todo";
@@ -8,6 +13,8 @@ import LoginView from "./views/auth/login";
 import IndexView from "./views/index/index";
 import AdminView from "./views/admin/admin";
 import RegisterView from "./views/auth/register";
+import InfoView from "./views/medicos_info/info";
+import MedInfoView from "./views/medicos_info/medInfo";
 
 // This is the most important and the main class of the project.
 // Here is rendered every other view for the project
@@ -28,6 +35,8 @@ class App extends Component {
               <Route path="/register" element={<RegisterView />} />
               <Route path="/todo" element={<TodoView />} />
               <Route path="/admin" element={<AdminView />}></Route>
+              <Route path="/directory" element={<InfoView />}></Route>
+              <Route path="/medico/:id" element={<MedInfoView />}></Route>
             </Routes>
             {/* if you want a Footer, can be added by uncommenting the lane below and adding the required component */}
             {/* <Footer /> */}
