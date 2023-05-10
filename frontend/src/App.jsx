@@ -13,12 +13,9 @@ import LoginView from "./views/auth/login";
 import IndexView from "./views/index/index";
 import AdminView from "./views/admin/admin";
 import RegisterView from "./views/auth/register";
-<<<<<<< HEAD
 import InfoView from "./views/medicos_info/info";
 import MedInfoView from "./views/medicos_info/medInfo";
-=======
 import AddMedicoView from "./views/admin/createMedicos";
->>>>>>> feature/medicos
 
 // This is the most important and the main class of the project.
 // Here is rendered every other view for the project
@@ -39,12 +36,9 @@ class App extends Component {
               <Route path="/register" element={<RegisterView />} />
               <Route path="/todo" element={<TodoView />} />
               <Route path="/admin" element={<AdminView />}></Route>
-<<<<<<< HEAD
               <Route path="/directory" element={<InfoView />}></Route>
               <Route path="/medico/:id" element={<MedInfoView />}></Route>
-=======
               <Route path="/AddMedico" element={<AddMedicoView />}></Route>
->>>>>>> feature/medicos
             </Routes>
             {/* if you want a Footer, can be added by uncommenting the lane below and adding the required component */}
             {/* <Footer /> */}
