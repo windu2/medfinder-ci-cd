@@ -63,7 +63,7 @@ def putMedico(request, rut):
     medico = Medico.objects.get(id=rut)
     new_rut = data['rut']
     # En caso de que el rut se mantenga no tengo conflictos
-    if(new_rut == rut):
+    if(new_rut == medico.rut):
         serializer = MedicoSerializer(instance=medico, data=data)
         if serializer.is_valid():
             serializer.save()
