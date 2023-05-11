@@ -22,66 +22,150 @@ import { Column } from 'primereact/column';
 
 
 var id_global;
-const InfoView = () => {
-  const [filters, setFilters] = useState({
-    global: { value: null, matchMode: FilterMatchMode.CONTAINS },
-  });
-
+const InfoView = ({isMounted}) => {
   const [data, setData] = useState([]);
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch("http://127.0.0.1:8000/api/medicos/get/");
-      const json = await response.json();
-      setData(json);
-    }
-
-    fetchData();
-  }, []);
+  function euconfio(){
 
 
 
+    var log = document.getElementById('rut');
+        // code to run after render goes here
+        document.getElementById('addform').addEventListener('submit', (event) => {
+            // handle the form data
+            event.preventDefault();
+            if (!validateRut(log.value)) {
+              console.log("Te pillamos ps compadre");
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
-  }
-  const [formData, setFormData] = useState({
-    RUT: '',
-    apellido_Paterno: '',
-    apellido_Materno: '',
-    nombre: '',
-    EDAD: '',
-    Especialidad: '',
-    Ubicacion: '',
-    email: ''
-  });
-  
+              return;
+            }
+            console.log("valido");
+            handleConfirm();
+          });
+        
 
-  const [modal, setModal] = useState(false);
 
-  const toggle = (e) =>{
-    if(e.target.value){
-      id_global = e.target.value;
-      var elemento = data.find(objeto => objeto.id === parseInt(id_global));
-      setFormData({
-        RUT: elemento.rut,
-        apellido_Paterno: elemento .apellido_P,
-        apellido_Materno: elemento .apellido_M,
-        nombre: elemento .nombre,
-        EDAD: elemento .edad,
-        Especialidad: elemento .especialidad,
-        Ubicacion: elemento .ubicacion,
-        Credencial: elemento .credencial
+
+      }
+
+
+      function formatterRut(e) {
+        var rut = e.target.value;
+        var actual = rut.toString().replace(/^0+/, "");
+        if (actual != '' && actual.length > 1) {
+          var sinPuntos = actual.replace(/\./g, "");
+          var actualLimpio = sinPuntos.replace(/-/g, "");
+          var inicio = actualLimpio.substring(0, actualLimpio.length - 1);
+          var rutPuntos = "";
+          var i = 0;
+          var j = 1;
+          for (i = inicio.length - 1; i >= 0; i--) {
+            var letra = !/^([0-9])*$/.test(inicio.charAt(i)) ? '' : inicio.charAt(i);
+            rutPuntos = letra + rutPuntos;
+            if (j % 3 == 0 && j <= inicio.length - 1) {
+              rutPuntos = "." + rutPuntos;
+            }
+            j++;
+          }
+          var dv = actualLimpio.substring(actualLimpio.length - 1);
+          rutPuntos = rutPuntos + "-" + dv;
+          e.target.value = rutPuntos;
+          //console.log("??")
+        }
+
+      }
+      function cleanRut(rut,withoutDv = false){
+        var sinPuntos = rut.toString().replace(/\./g, "");
+        var actualLimpio = sinPuntos.replace(/-/g, "");
+        return withoutDv ? actualLimpio : actualLimpio.substring(0, actualLimpio.length - 1);
+      }
+
+      function validateRut(rut){
+        if (!/^0*(\d{1,3}(\.?\d{3})*)-?([\dkK])$/.test(rut.toString())) {
+          return false;
+        }
+        rut = cleanRut(rut,true);
+        var t = parseInt(rut.slice(0, -1), 10);
+        var m = 0;
+        var s = 1;
+        while (t > 0) {
+          s = (s + (t % 10) * (9 - m++ % 6)) % 11;
+          t = Math.floor(t / 10);
+        }
+        var v = s > 0 ? '' + (s - 1) : 'K';
+        return v === rut.slice(-1);
+      }
+
+      const [filters, setFilters] = useState({
+        global: { value: null, matchMode: FilterMatchMode.CONTAINS },
       });
-    }
-    
-    
-    console.log("el id_global es:" +id_global)
-    setModal(!modal);
-  }
 
-  const handleConfirm = () => {
+      
+
+      useEffect(() => {
+        async function fetchData() {
+          const response = await fetch("http://127.0.0.1:8000/api/medicos/get/");
+          const json = await response.json();
+          setData(json);
+          euconfio();
+        }
+
+        fetchData();
+      }, []);
+
+
+
+
+      const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setFormData({ ...formData, [name]: value });
+      }
+      const [formData, setFormData] = useState({
+        RUT: '',
+        apellido_Paterno: '',
+        apellido_Materno: '',
+        nombre: '',
+        EDAD: '',
+        Especialidad: '',
+        Ubicacion: '',
+        email: ''
+      });
+
+
+      const [modal, setModal] = useState(false);
+
+      const toggle = (e) =>{
+        if(e.target.value){
+          id_global = e.target.value;
+          var elemento = data.find(objeto => objeto.id === parseInt(id_global));
+          setFormData({
+            RUT: elemento.rut,
+            apellido_Paterno: elemento .apellido_P,
+            apellido_Materno: elemento .apellido_M,
+            nombre: elemento .nombre,
+            EDAD: elemento .edad,
+            Especialidad: elemento .especialidad,
+            Ubicacion: elemento .ubicacion,
+            Credencial: elemento .credencial
+          });
+        }
+
+
+        console.log("el id_global es:" +id_global)
+        setModal(!modal);
+      }
+      async function updateData() {
+        const response = await fetch("http://127.0.0.1:8000/api/medicos/put/"+id_global+"/", { method: 'PUT' }, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: newdatosJSON
+        });
+        const json = await response.json();
+    //window.location.reload();
+  }
+  function handleConfirm() {
     console.log("id glogal: "+id_global)
     var newapellido_P = document.getElementById("apellidoP");
     var newapellido_M = document.getElementById("apellidoM");
@@ -105,7 +189,7 @@ const InfoView = () => {
       "ubicacion": ""+newubicacion.value,
       "credencial": ""+newcredencial.value
     };
-    
+
 
 
   // Convertir el objeto JSON a una cadena JSON
@@ -114,17 +198,7 @@ const InfoView = () => {
 
 
   // Redirigir a la función para enviar la consulta SQL con el nuevo valor
-  async function updateData() {
-    const response = await fetch("http://127.0.0.1:8000/api/medicos/put/"+id_global+"/", { method: 'PUT' }, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: newdatosJSON
-    });
-    const json = await response.json();
-    window.location.reload();
-  }
+  
   updateData();
 
 
@@ -193,7 +267,7 @@ function renderDataTable(e) {
     const response = await fetch('http://127.0.0.1:8000/api/medicos/delete/' + e.target.value+"/", { method: 'DELETE' })
     .then(res => res.text()) // or res.json()
     .then(res => console.log(res))
-    window.location.reload();
+    //window.location.reload();
   }
 
 
@@ -212,52 +286,62 @@ function renderDataTable(e) {
 return (
   <div>
   <div>
-
+  
   <Modal isOpen={modal} toggle={toggle} >
   <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+  
   <ModalBody>
+  <form id='addform'>
   <FormGroup>
   <Label for="exampleEmail">Rut</Label>
-  <Input type="text" name="RUT" id="rut" placeholder="Escriba el nuevo Rut"value={formData.RUT} onChange={handleInputChange} /> 
+  <Input type="text, number" input-mode="numeric" onInput={e=>formatterRut(e)} name="RUT" id="rut" placeholder="Escriba el nuevo Rut"value={formData.RUT} maxlength={12} onChange={handleInputChange} /> 
   </FormGroup>
   <FormGroup>
   <Label for="exampleEmail">Apellido Paterno</Label>
-  <Input type="text" name="apellido_Paterno" id="apellidoP" placeholder="Escriba el nuevo Apellido Paterno" value={formData.apellido_Paterno} onChange={handleInputChange}/>
+  <Input type="text" name="apellido_Paterno" id="apellidoP" placeholder="Escriba el nuevo Apellido Paterno" maxLength={50} pattern="^[a-zA-Z][a-zA-Z ]{1,49}" value={formData.apellido_Paterno} onChange={handleInputChange}/>
   </FormGroup>
   <FormGroup>
   <Label for="exampleEmail">Apellido Materno</Label>
-  <Input type="text" name="apellido_Materno" id="apellidoM" placeholder="Escriba el nuevo Apellido Materno" value={formData.apellido_Materno} onChange={handleInputChange} />
+  <Input type="text" name="apellido_Materno" id="apellidoM" placeholder="Escriba el nuevo Apellido Materno" maxLength={50} pattern="^[a-zA-Z][a-zA-Z ]{1,49}"  value={formData.apellido_Materno} onChange={handleInputChange} />
   </FormGroup>
   <FormGroup>
   <Label for="exampleEmail">Nombres</Label>
-  <Input type="text" name="nombre" id="Nombres" placeholder="Escriba los nuevos Nombres" value={formData.nombre} onChange={handleInputChange}/>
+  <Input type="text" name="nombre" id="Nombres" placeholder="Escriba los nuevos Nombres" pattern="^[a-zA-Z][a-zA-Z ]{1,49}" maxLength={50} value={formData.nombre} onChange={handleInputChange}/>
   </FormGroup>
   <FormGroup>
   <Label for="exampleEmail">Edad</Label>
-  <Input type="number" name="EDAD" id="edad" placeholder="Escriba la nueva edad" value={formData.EDAD} onChange={handleInputChange}/>
+  <Input type="number" name="EDAD" id="edad" placeholder="Escriba la nueva edad" value={formData.EDAD} min="1" max="99" maxLength={2} onChange={handleInputChange}/>
   </FormGroup>
   <FormGroup>
   <Label for="exampleEmail">Especialidad</Label>
-  <Input type="text" name="Especialidad" id="especialidad" placeholder="Escriba la nueva Especialidad " value={formData.Especialidad} onChange={handleInputChange}/>
+  <Input type="text" name="Especialidad" id="especialidad" placeholder="Escriba la nueva Especialidad " value={formData.Especialidad} pattern="^[a-zA-Z][a-zA-Z ]{1,49}" maxLength={50} onChange={handleInputChange}/>
   </FormGroup>
   <FormGroup>
   <Label for="exampleEmail">Ubicación</Label>
-  <Input type="url" name="Ubicacion" id="ubicacion" placeholder="Ingrese el link de la Ubicación" value={formData.Ubicacion} onChange={handleInputChange}/>
+  <Input type="url" name="Ubicacion" id="ubicacion" placeholder="Ingrese el link de la Ubicación" value={formData.Ubicacion} maxLength={100} onChange={handleInputChange}/>
   </FormGroup>
   <FormGroup>
   <Label for="exampleEmail">Credencial</Label>
-  <Input type="url" name="email" id="credencial" placeholder="Ingrese el link con la Credencial" value={formData.Credencial} onChange={handleInputChange}/>
+  <Input type="url" name="Credencial" id="credencial" placeholder="Ingrese el link con la Credencial" value={formData.Credencial} maxLength={100} onChange={handleInputChange}/>
   </FormGroup>
-  </ModalBody>
-  <ModalFooter>
-  <Button color="primary" onClick={handleConfirm}>
+  <Button type="submit" color="primary" id="submit" >
   Confirmar
   </Button>{' '}
+  </form>
+  </ModalBody>
+  
+  <ModalFooter>
+  
   <Button color="secondary" onClick={toggle}>
   Cancel
   </Button>
+  
   </ModalFooter>
+
+
   </Modal>
+  
+  
   </div>
 
 
