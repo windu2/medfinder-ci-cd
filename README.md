@@ -1,93 +1,70 @@
-# Django + React Api Rest
+# MedFinder
 
-[Tutorial for django with react login](https://sushil-kamble.medium.com/django-rest-framework-react-authentication-workflow-2022-part-1-a21f22b3f358)
+Este programa permite realizar búsqueda de médicos por especialidad, ver su información, ubicación e incluso su certificado de título. Además cuenta con un login para administradores que pueden editar los médicos o agregar nuevos.
 
-In this project we have an approach in how to use Django for backend and React for frontend. It consist in a TODO application, with dynamic rendering.
+## Preparación
 
-I recommed to read the [wiki](https://scgitlab.sc.eso.org/psw/optools/boilerplates/optools-boilerplate-frontend-ads/-/wikis/home) before start the development.
+> Esta sección es para instalar venv en el sistema y tener un entorno de ejecucion común. Si no lo necesita o no lo usará puede saltarse a la siguiente sección.
 
-## Install prerequisites
+### Creación de Virtual Enviroment
 
-Check the python version is the correct one
+Al instalar python3 en el sistema, este incluye la opción de crear venvs, que son entornos de ejecución de códigos aislados, por lo que no interfieren con todo el computador o servidor donde se hospedan.
+
+Crearemos un entorno virtual llamado `venv`:
+
 ```shell
-python --version  # at least 3.9, otherwise install python using e.g. Homebrew
-```
-
-Install packages needed at system level for the project, for instance, OpenLDAP for authentication
-```shell
-brew install openldap
-```
-and other system level packages the project might need (graphviz, oracle client, just to name a few).
-
-### Virtual enviroment
-
-Create a [virtual enviroment](https://docs.python.org/3/library/venv.html) for the project.
-```shell
-cd <project-folder>
 python3 -m venv venv
 ```
 
-Activate the enviroment and install the development requirements.
+Ahora podemos ejecutarlo con el siguiente comando desde la carpeta raíz del programa:
+
 ```shell
 source venv/bin/activate
+```
+
+### Instalación de requerimientos
+
+Con el Virtual Enviroment activado, instalamos los paquetes requeridos dentro del `requirement.txt` con el siguiente comando:
+
+```shell
 pip install -r requirements/development.txt
 ```
-### Frontend
 
-Install npm and node.js.
+Con esto tenemos todo listo para ejecutar el programa!
+
+## Como ejecutar
+
+1. Se deben abrir dos terminales para ejecutar el `frontend` y `backend` en un mismo pc.
+2. En ambas terminales ejecutar el ambiente con `source venv/bin/activate`
+3. En la primera ejecutar el `backend` con python utilizando el siguiente comando:
+
+> Nota: Recuerda correr antes las migraciones con `python manage.py runserver`
+
 ```shell
-brew install node
-```
-
-Install the frontend requeriments.
-```shell
-cd <project-folder>/frontend
-npm install
-```
-
-You are all set!
-
-For next steps you can see [How to create a new component](app-component)
-
-### To run in Dev
-First we will need two terminals running in parallel. 
-
-All this commands are excetued inside the project folder.
-
-#### First terminal
-```shell
-source venv/bin/activate
 cd backend
-python .\manage.py runserver
+python3 manage.py runserver
 ```
 
+4. En la segunda terminal ejecutar el `frontend` con python utilizando el siguiente comando:
 
-#### Second terminal
+> Nota: Recuerda instalar las dependencias con `npm install`
+
 ```shell
 cd frontend
-npm install
 npm start
 ```
-With this two terminals running you should see something like this
 
-![example_image](example.png "Example image")
+5. Ahora se puede ingresar a `http://localhost:5173` y ver la aplicación!
 
+## Consideraciones
 
-# For develop
-If you are going to develop over this template, please read the wiki for further information
-
-## Versions
-* python version = 3.10
-* npx version = 8.19
-* create-react-app = 5.0
-
-## Reinitailize git repository
-
-- Delete `.git` folder in project root
-  > Make sure you turn on the "Show hidden files, folders and disks" option.
-- `git init`
-
-# About
-This repo is part of [SM2023 Internship: "Fulana"](https://gitlab.eso.org/vlizana/sm2023-fulana/-/wikis/home), done in summer of 2023 at PSW, Paranal Observatory
+1. Correr los comandos en las notas de los pasos 3 y 4.
 
 
+# Como contribuir
+
+Para contribuir en el código se puede realizar un fork del git actual, y luego hacer un pull request que será revisado por los dueños del Git actual.
+
+# Licencia
+
+Para ver las licencia GNU-3 haga click [aqui](https://github.com/PyComm/PyComm/blob/main/LICENSE)
