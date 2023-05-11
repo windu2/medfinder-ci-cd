@@ -154,7 +154,7 @@ const AddMedicoView = (e) => {
                                         required
                                         placeholder="Nombre médico"
                                         maxLength={50}
-                                        pattern="[a-Z]{0,50}"
+                                        pattern="^[a-zA-Z][a-zA-Z ]{1,49}"
                                         name="nombre"
                                         value={nombre}
                                         onChange={(e) => setNombre(e.target.value)}
@@ -170,7 +170,7 @@ const AddMedicoView = (e) => {
                                         required
                                         placeholder="Apellido Paterno"
                                         maxLength={50}
-                                        pattern="[a-Z]{0,50}"
+                                        pattern="^[a-zA-Z][a-zA-Z ]{1,49}"
                                         name="apellido_P"
                                         value={apellido_P}
                                         onChange={(e) => setApellido_P(e.target.value)}
@@ -186,7 +186,7 @@ const AddMedicoView = (e) => {
                                         required
                                         placeholder="Apellido Materno"
                                         maxLength={50}
-                                        pattern="[a-Z]{0,50}"
+                                        pattern="^[a-zA-Z][a-zA-Z ]{1,49}"
                                         name="apellido_M"
                                         value={apellido_M}
                                         onChange={(e) => setApellido_M(e.target.value)}
@@ -218,7 +218,7 @@ const AddMedicoView = (e) => {
                                         required
                                         placeholder="Especialidad"
                                         maxLength={50}
-                                        pattern="[a-Z]{0,50}"
+                                        pattern="^[a-zA-Z][a-zA-Z ]{1,49}"
                                         name="especialidad"
                                         value={especialidad}
                                         onChange={(e) => setEspecialidad(e.target.value)}
