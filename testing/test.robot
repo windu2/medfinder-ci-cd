@@ -2,14 +2,6 @@
 Library  Selenium2Library
 
 *** Test Cases ***
-# Open Google
-#     Open Browser  https://www.google.com  chrome
-#     Maximize Browser Window
-#     Wait Until Page Contains Element  name=q
-#     Input Text  name=q  Robot Framework
-#     Press Keys  name=q  RETURN
-#     Wait Until Page Contains  Robot Framework
-#     Close Browser
 
 Open MedicInfo
     Open Browser  http://localhost:5173/  chrome
@@ -44,5 +36,81 @@ Valid Create Medic
     Sleep  3s
     Submit Form
     Go To  http://localhost:5173/directory
+    Sleep  3s
+
+Invalid Create Medic
+    Open Browser  http://localhost:5173/  chrome
+    Maximize Browser Window
+    Wait Until Page Contains Element  xpath=//a[contains(text(),'Login Administrador')]
+    Click Element  xpath=//a[contains(text(),'Login Administrador')]
+    Input Text  username  brunalga
+    Input Text  password  cristian10
+    Click Element  xpath=//button[contains(text(),'Login')]
+    Sleep  3s
+    Click Element  xpath=//a[contains(text(),'Crear Médico')]
+    Input Text  rut  sdsdf
+    Input Text  nombre  234567
+    Input Text  apellido_P  @@@@;;;55
+    Input Text  apellido_M  345678
+    Input Text  edad  25
+    Input Text  especialidad  Cirujano
+    Input Text  ubicacion  https://goo.gl/maps/EJocG2LnmFPJNspj7
+    Input Text  credencial  https://www.soundczech.cz/temp/lorem-ipsum.pdf
+    Sleep  3s
+    Submit Form
+    Go To  http://localhost:5173/directory
+    Sleep  3s
+
+Delete Medic
+    Open Browser  http://localhost:5173/  chrome
+    Maximize Browser Window
+    Wait Until Page Contains Element  xpath=//a[contains(text(),'Login Administrador')]
+    Click Element  xpath=//a[contains(text(),'Login Administrador')]
+    Input Text  username  brunalga
+    Input Text  password  cristian10
+    Click Element  xpath=//button[contains(text(),'Login')]
+    Sleep  3s
+    Click Element  xpath=//a[contains(text(),'Ver Médicos')]
+    Click Element  xpath=//button[contains(text(),'Eliminar')]
+    Sleep  3s
+    Handle Alert   accept
+    Sleep  3s
+
+Valid Edit Medic
+    Open Browser  http://localhost:5173/  chrome
+    Maximize Browser Window
+    Wait Until Page Contains Element  xpath=//a[contains(text(),'Login Administrador')]
+    Click Element  xpath=//a[contains(text(),'Login Administrador')]
+    Input Text  username  brunalga
+    Input Text  password  cristian10
+    Click Element  xpath=//button[contains(text(),'Login')]
+    Sleep  3s
+    Click Element  xpath=//a[contains(text(),'Ver Médicos')]
+    Click Element  xpath=//a[contains(text(),'Editar')]
+    Sleep  3s
+    Input Text  nombre  Pedro
+    Input Text  apellido_M  Pascal
+    Sleep  3s
+    Submit Form
+    Sleep  3s
+
+Edit Without Login
+    Open Browser  http://localhost:5173/EditMedico/3  chrome
+    Maximize Browser Window
+    Sleep  3s
+    Input Text  nombre  Pedro
+    Input Text  apellido_M  Pascal
+    Sleep  3s
+    Submit Form
+    Go To  http://localhost:5173/directory
+    Go To  http://localhost:5173/medico/3
+    Sleep  3s
+
+Use Search
+    Open Browser  http://localhost:5173  chrome
+    Maximize Browser Window
+    Wait Until Page Contains Element  xpath=//a[contains(text(),'Revisa Aquí')]
+    Click Element  xpath=//a[contains(text(),'Revisa Aquí')]
+    Input Text  search  Ped
     Sleep  3s
     
