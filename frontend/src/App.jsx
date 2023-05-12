@@ -16,6 +16,7 @@ import RegisterView from "./views/auth/register";
 import InfoView from "./views/medicos_info/info";
 import MedInfoView from "./views/medicos_info/medInfo";
 import AddMedicoView from "./views/admin/createMedicos";
+import EditMedicoView from "./views/medicos_info/medEdit";
 
 // This is the most important and the main class of the project.
 // Here is rendered every other view for the project
@@ -39,6 +40,7 @@ class App extends Component {
               <Route path="/directory" element={<InfoView />}></Route>
               <Route path="/medico/:id" element={<MedInfoView />}></Route>
               <Route path="/AddMedico" element={<AddMedicoView />}></Route>
+              <Route path="/EditMedico/:id" element={<EditMedicoView />}></Route>
             </Routes>
             {/* if you want a Footer, can be added by uncommenting the lane below and adding the required component */}
             {/* <Footer /> */}
