@@ -37,6 +37,7 @@ Valid Create Medic
     Submit Form
     Go To  http://localhost:5173/directory
     Sleep  3s
+    Close Browser
 
 Invalid Create Medic
     Open Browser  http://localhost:5173/  chrome
@@ -52,7 +53,7 @@ Invalid Create Medic
     Input Text  nombre  234567
     Input Text  apellido_P  @@@@;;;55
     Input Text  apellido_M  345678
-    Input Text  edad  25
+    Input Text  edad  100
     Input Text  especialidad  Cirujano
     Input Text  ubicacion  https://goo.gl/maps/EJocG2LnmFPJNspj7
     Input Text  credencial  https://www.soundczech.cz/temp/lorem-ipsum.pdf
@@ -60,6 +61,7 @@ Invalid Create Medic
     Submit Form
     Go To  http://localhost:5173/directory
     Sleep  3s
+    Close Browser
 
 Delete Medic
     Open Browser  http://localhost:5173/  chrome
@@ -75,6 +77,7 @@ Delete Medic
     Sleep  3s
     Handle Alert   accept
     Sleep  3s
+    Close Browser
 
 Valid Edit Medic
     Open Browser  http://localhost:5173/  chrome
@@ -93,6 +96,7 @@ Valid Edit Medic
     Sleep  3s
     Submit Form
     Sleep  3s
+    Close Browser
 
 Edit Without Login
     Open Browser  http://localhost:5173/EditMedico/3  chrome
@@ -105,6 +109,7 @@ Edit Without Login
     Go To  http://localhost:5173/directory
     Go To  http://localhost:5173/medico/3
     Sleep  3s
+    Close Browser
 
 Use Search
     Open Browser  http://localhost:5173  chrome
@@ -113,4 +118,5 @@ Use Search
     Click Element  xpath=//a[contains(text(),'Revisa Aquí')]
     Input Text  search  Ped
     Sleep  3s
+    Close Browser
     
