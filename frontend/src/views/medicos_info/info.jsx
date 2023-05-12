@@ -214,6 +214,7 @@ return (
   <Col md={3}>
   <h1 >Médicos</h1>
   <div className="text-end">
+    
   <Input id="search" name="especialidad" placeholder="Buscar"
   onInput={(e) =>
     setFilters({
@@ -222,7 +223,9 @@ return (
   }
   />
   </div>
-
+  <br />
+  <a href="/addMedico" className="btn btn-primary">Agregar Médico</a>
+  <br />
   <br />
   </Col>
   <DataTable value={data} dataKey="id" showGridlines scrollable paginator rows={5} rowsPerPageOptions={[5, 10, 25, 50]} tableStyle={{ minWidth: '50rem' }} scrollHeight="400px" filters={filters}

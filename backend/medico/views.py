@@ -72,7 +72,7 @@ def putMedico(request, rut):
     # En caso de que el Rut cambie, hay que ver que no sea el de otra persona
     try:
         other_medico = Medico.objects.get(rut=new_rut)
-        return Response("Este rut ya está en uso")  
+        return Response("Rut actualmente en uso")  
     except:
         serializer = MedicoSerializer(instance=medico, data=data)
         if serializer.is_valid():

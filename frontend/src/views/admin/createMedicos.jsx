@@ -20,6 +20,7 @@ const AddMedicoView = (e) => {
             event.preventDefault();
             if (!validateRut(log.value)) {
                 console.log("Te pillamos ps compadre");
+                alert("Rut inválido")
                 return;
             }
             console.log("valido");
@@ -97,15 +98,15 @@ const AddMedicoView = (e) => {
     const AddMedicInfo = async () => {
         let formField = new FormData()
 
-        formField.append('rut', rut)
-        formField.append('nombre', nombre)
-        formField.append('apellido_P', apellido_P)
-        formField.append('apellido_M', apellido_M)
-        formField.append('edad', edad)
-        formField.append('especialidad', especialidad)
+        formField.append('rut', document.getElementById("rut").value)
+        formField.append('nombre',  document.getElementById("nombre").value)
+        formField.append('apellido_P', document.getElementById("apellido_P").value)
+        formField.append('apellido_M',document.getElementById("apellido_M").value)
+        formField.append('edad', document.getElementById("edad").value)
+        formField.append('especialidad', document.getElementById("especialidad").value)
         formField.append('profesion', "profesion")
-        formField.append('ubicacion', ubicacion)
-        formField.append('credencial', credencial)
+        formField.append('ubicacion', document.getElementById("ubicacion").value)
+        formField.append('credencial', document.getElementById("credencial").value)
 
         await axios({
             method: 'post',
@@ -113,6 +114,12 @@ const AddMedicoView = (e) => {
             data: formField
         }).then((response) => {
             console.log(response.data)
+            if(response.data == "Rut actualmente en uso" ){
+                alert(response.data)
+                return;
+            }
+            alert("Usuario Creado");
+            window.location = "/directory";
         })
     }
 
@@ -134,7 +141,7 @@ const AddMedicoView = (e) => {
                                         type="text, number" input-mode="numeric"
                                         maxlength={12}
                                         className="form-control form-control-lg"
-                                        id='rut'
+                                        id="rut"
                                         onInput={e => formatterRut(e)}
                                         required
                                         placeholder="12.345.678-9"
@@ -152,6 +159,7 @@ const AddMedicoView = (e) => {
                                         type="text"
                                         className="form-control form-control-lg"
                                         required
+                                        id='nombre'
                                         placeholder="Nombre médico"
                                         maxLength={50}
                                         pattern="^[a-zA-Z][a-zA-Z ]{1,49}"
@@ -168,6 +176,7 @@ const AddMedicoView = (e) => {
                                         type="text"
                                         className="form-control form-control-lg"
                                         required
+                                        id='apellido_P'
                                         placeholder="Apellido Paterno"
                                         maxLength={50}
                                         pattern="^[a-zA-Z][a-zA-Z ]{1,49}"
@@ -184,6 +193,7 @@ const AddMedicoView = (e) => {
                                         type="text"
                                         className="form-control form-control-lg"
                                         required
+                                        id='apellido_M'
                                         placeholder="Apellido Materno"
                                         maxLength={50}
                                         pattern="^[a-zA-Z][a-zA-Z ]{1,49}"
@@ -200,6 +210,7 @@ const AddMedicoView = (e) => {
                                         type="number"
                                         className="form-control form-control-lg"
                                         required
+                                        id='edad'
                                         placeholder="Edad"
                                         maxLength={2}
                                         min="1" max="99"
@@ -216,6 +227,7 @@ const AddMedicoView = (e) => {
                                         type="text"
                                         className="form-control form-control-lg"
                                         required
+                                        id='especialidad'
                                         placeholder="Especialidad"
                                         maxLength={50}
                                         pattern="^[a-zA-Z][a-zA-Z ]{1,49}"
@@ -234,6 +246,7 @@ const AddMedicoView = (e) => {
                                         type="url"
                                         className="form-control form-control-lg"
                                         required
+                                        id='ubicacion'
                                         placeholder="Ubicación"
                                         maxLength={100}
                                         name="ubicacion"
@@ -249,6 +262,7 @@ const AddMedicoView = (e) => {
                                         type="url"
                                         className="form-control form-control-lg"
                                         required
+                                        id='credencial'
                                         placeholder="Credencial"
                                         maxLength={100}
                                         name="credencial"

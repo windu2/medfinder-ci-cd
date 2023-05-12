@@ -59,6 +59,7 @@ const EditMedicoView = () => {
             event.preventDefault();
             if (!validateRut(log.value)) {
                 console.log("Te pillamos ps compadre");
+                alert("Rut inválido")
                 return;
             }
             console.log("valido");
