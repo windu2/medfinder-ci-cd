@@ -10,7 +10,8 @@ node_modules/
 
 # production
 # UNCOMMENT BUILD FOR PRODUCTION
-# build/
+build/
+dist/
 
 # misc
 .DS_Store
