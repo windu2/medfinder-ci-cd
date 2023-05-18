@@ -1,9 +1,8 @@
 // This is the TODO page, where is rendering only the TODO component
 
 import { useNavigate } from "react-router-dom";
-import { Button } from "reactstrap";
+import image from "/background2.jpg";
 
-import image from "../../../public/background2.jpg"; 
 const IndexView = () => {
 
   const navigate = useNavigate()

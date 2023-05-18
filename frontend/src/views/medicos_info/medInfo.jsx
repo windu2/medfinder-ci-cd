@@ -1,20 +1,11 @@
 // This is the TODO page, where is rendering only the TODO component
-import image from "../../../public/background2.jpg";
-
-
-
+import image from "/background2.jpg";
 
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import {
-  ListGroup, ListGroupItem, Col,
-  Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle,
-  Row,
-} from "reactstrap";
+import { Col, Card, CardBody, CardTitle, Row } from "reactstrap";
 
 const MedInfoView = () => {
-
   const params = useParams();
 
   function renderDataTable(esp) {
@@ -37,7 +28,6 @@ const MedInfoView = () => {
     }
 
     fetchData();
-
   }, []);
   for (let j = 0; j < data.length; j++) {
     console.log(j);
@@ -60,38 +50,64 @@ const MedInfoView = () => {
         break;
       }
     }
-  
+
     return (
       <div>
-        <div style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${image})`, backgroundSize: 'cover', height: '100vh', }}>
-          <Row style={{ paddingTop: "50px", justifyContent: "center", alignItems: "center" }}>
-            <Col md={5} >
+        <div
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${image})`,
+            backgroundSize: "cover",
+            height: "100vh",
+          }}
+        >
+          <Row
+            style={{
+              paddingTop: "50px",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Col md={5}>
               <Card>
                 <CardTitle>
-                  <h1 style={{ paddingLeft: "10px", paddingTop: "5px" }} >Médico</h1>
+                  <h1 style={{ paddingLeft: "10px", paddingTop: "5px" }}>
+                    Médico
+                  </h1>
                 </CardTitle>
                 <CardBody>
-                <p>{"Nombre: " + data[i].nombre + " "+ data[i].apellido_P + " " + data[i].apellido_M }</p>
-                <p>{"Rut: " + data[i].rut}</p>
-                <p>{"Edad: " + data[i].edad}</p>
-                <p>{"Edpecialidad: " + data[i].especialidad} </p>
-                <p>{"Ubicación: "}<a href={data[i].ubicacion}target="blank"> {data[i].ubicacion}</a></p>
-                <p>{"Credencial: "}<a href={data[i].credencial}target="blank"> {data[i].credencial}</a></p>
-                  
-  
+                  <p>
+                    {"Nombre: " +
+                      data[i].nombre +
+                      " " +
+                      data[i].apellido_P +
+                      " " +
+                      data[i].apellido_M}
+                  </p>
+                  <p>{"Rut: " + data[i].rut}</p>
+                  <p>{"Edad: " + data[i].edad}</p>
+                  <p>{"Edpecialidad: " + data[i].especialidad} </p>
+                  <p>
+                    {"Ubicación: "}
+                    <a href={data[i].ubicacion} target="blank">
+                      {" "}
+                      {data[i].ubicacion}
+                    </a>
+                  </p>
+                  <p>
+                    {"Credencial: "}
+                    <a href={data[i].credencial} target="blank">
+                      {" "}
+                      {data[i].credencial}
+                    </a>
+                  </p>
                 </CardBody>
               </Card>
-  
             </Col>
-  
-  
-  
           </Row>
         </div>
       </div>
     );
   }
-  
 };
 
 export default MedInfoView;
