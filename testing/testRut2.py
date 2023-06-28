@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 
 route = "localhost:5173"
 
+
 driver = webdriver.Chrome()
 driver.get(route + "/addMedico")
 assert "Python" in driver.title
