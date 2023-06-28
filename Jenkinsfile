@@ -8,6 +8,7 @@ pipeline {
             }
             steps {
             // Run Maven on a Unix agent.
+            bat cd testing
             bat python test.py
 
             // To run Maven on a Windows agent, use
