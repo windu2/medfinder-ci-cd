@@ -1,3 +1,5 @@
+properties([pipelineTriggers([githubPush()])])
+
 pipeline {
     agent any
 
@@ -17,10 +19,10 @@ pipeline {
     }
     post {
     success {
-      slackSend color: '#36a64f', message: "Deployment of myapp to production succeeded!"
+      slackSend color: '#36a64f', message: "Deployment of MedFinder CI/CD to production succeeded!"
     }
     failure {
-      slackSend color: '#ff0000', message: "Deployment of myapp to production failed!"
+      slackSend color: '#ff0000', message: "Deployment of Medfinder CI/CD to production failed!"
     }
   }
 }
