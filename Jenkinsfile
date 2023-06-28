@@ -8,8 +8,8 @@ pipeline {
             }
             steps {
             // Run Maven on a Unix agent.
-            bat cd testing
-            bat python testRut.py
+            cd testing
+            python testRut.py
 
             // To run Maven on a Windows agent, use
             // bat "mvn -Dmaven.test.failure.ignore=true clean package"
