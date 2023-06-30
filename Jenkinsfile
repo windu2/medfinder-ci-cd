@@ -6,33 +6,59 @@ pipeline {
     stages {
         stage('Testing') {
             when {
-                branch "test/actualizar"
+                branch "test/dev"
             }
             steps {
-            // testing
-            bat "python testing/testActualizar.py"
-            // To run Maven on a Windows agent, use
-            // bat "mvn -Dmaven.test.failure.ignore=true clean package"
-            }
-            when {
-                branch "test/rut"
-            }
-            steps {
-            // testing
-            bat "python testing/testRut.py"
-
-            // To run Maven on a Windows agent, use
-            // bat "mvn -Dmaven.test.failure.ignore=true clean package"
-            }
-            when {
-                branch "test/registro"
-            }
-            steps {
-            // testing
+            // testing registro
+            echo "Testing Creación"
             bat "python testing/testRegistro.py"
 
-            // To run Maven on a Windows agent, use
-            // bat "mvn -Dmaven.test.failure.ignore=true clean package"
+
+            //testing Actualizar
+            echo "Testing Atualizar"
+            bat "python testing/testActualizar.py"
+
+            /*
+
+            //testing Leer
+            echo "Testing Leer Registro"
+            bat "python testing/test_lectura.py"
+
+            //testing Eliminar
+            echo "Testing Eliminar Registro"
+            bat "python testing/testEliminar.py" 
+            
+            //testing Rut
+            echo "Testing RUT"
+            bat "python testing/testRut.py"
+
+            //testing Nombre
+            echo "Testing Nombre"
+            bat "python testing/testNombre.py"
+
+            //testing Apellido
+            echo "Testing Apellido"
+            bat "python testing/testApellido.py"
+
+            //testing Edad
+            echo "Testing Edad"
+            bat "python testing/testEdad.py"
+
+            //testing Especialidad
+            echo "Testing Especialidad"
+            bat "python testing/testEspecialidad.py"
+
+            //testing Ubicacion
+            echo "Testing Ubicacion"
+            bat "python testing/testUbicacion.py"
+
+            //testing Credencial
+            echo "Testing Credencial"
+            bat "python testing/testCredencial.py"
+            
+            */
+            
+
             }
         }
     }
