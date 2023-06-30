@@ -13,10 +13,10 @@ def test1():
     #login as Admin
     driver.get(route + "/login")
     elem = driver.find_element(By.ID, "username")
-    elem.send_keys("mabbott")
+    elem.send_keys("windu")
 
     elem = driver.find_element(By.ID, "password")
-    elem.send_keys("chapalapachala97")
+    elem.send_keys("!Q2w3e4r5t")
     elem.send_keys(Keys.ENTER)
     time.sleep(1.5)
 
