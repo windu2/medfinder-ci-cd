@@ -39,6 +39,7 @@ const EditMedicoView = () => {
         nombre: response.data.nombre,
         edad: response.data.edad,
         especialidad: response.data.especialidad,
+        profesion: "medico",
         ubicacion: response.data.ubicacion,
         credencial: response.data.credencial,
       });
@@ -104,11 +105,12 @@ const EditMedicoView = () => {
     }
 
     try {
-      const response = await axios.post(
-        "http://localhost:8000/api/medicos/post/",
-        formData
-      );
-
+      const response = await axios({
+        method: 'put',
+        url: `http://localhost:8000/api/medicos/put/${params.id}/`,
+        data: formData
+      });
+      
       console.log(response.data);
       if (response.data === "Rut actualmente en uso") {
         alert(response.data);
