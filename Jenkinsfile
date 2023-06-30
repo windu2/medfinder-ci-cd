@@ -37,7 +37,7 @@ pipeline {
 
             //testing Apellido
             echo "Testing Apellido"
-            bat "python testing/test_apellido.py"
+            bat "python testing/test_apellidos.py"
 
             //testing Edad
             echo "Testing Edad"
