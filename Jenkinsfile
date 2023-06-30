@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Testing') {
             when {
-                branch "test/dev"
+                branch "dev"
             }
             steps {
             // testing registro
