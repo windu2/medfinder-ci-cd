@@ -17,8 +17,7 @@ pipeline {
             //testing Actualizar
             echo "Testing Atualizar"
             bat "python testing/testActualizar.py"
-
-            /*
+        
 
             //testing Leer
             echo "Testing Leer Registro"
@@ -34,11 +33,11 @@ pipeline {
 
             //testing Nombre
             echo "Testing Nombre"
-            bat "python testing/testNombre.py"
+            bat "python testing/test_nombre.py"
 
             //testing Apellido
             echo "Testing Apellido"
-            bat "python testing/testApellido.py"
+            bat "python testing/test_apellido.py"
 
             //testing Edad
             echo "Testing Edad"
@@ -46,7 +45,7 @@ pipeline {
 
             //testing Especialidad
             echo "Testing Especialidad"
-            bat "python testing/testEspecialidad.py"
+            bat "python testing/test_especialidad.py"
 
             //testing Ubicacion
             echo "Testing Ubicacion"
@@ -55,9 +54,6 @@ pipeline {
             //testing Credencial
             echo "Testing Credencial"
             bat "python testing/testCredencial.py"
-            
-            */
-            
 
             }
         }
