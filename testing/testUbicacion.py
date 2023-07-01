@@ -96,9 +96,9 @@ def test2():
     
     alert = driver.switch_to.alert
 
-    res = "Usuario Creado"
+    res = ""
     try:
-        assert "" in alert.text
+        assert "Usuario Creado" in alert.text
         res = "Test2 éxito"
     except:
         res = "Test2 fallo"
