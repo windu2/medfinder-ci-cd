@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Testing') {
             when {
-                branch "dev"
+                branch "main"
             }
             steps {
             // testing registro
