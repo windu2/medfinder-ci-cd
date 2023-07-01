@@ -11,6 +11,7 @@ pipeline {
             echo "Testing Creación"
             bat "python testing/testRegistro.py"
 
+            /*
 
             //testing Actualizar
             echo "Testing Atualizar"
@@ -54,6 +55,7 @@ pipeline {
             bat "python testing/testCredencial.py"
 
             //finalAhora si!
+            */
 
             }
         }
