@@ -48,7 +48,7 @@ def test1():
     
     res = ""
     try:
-        assert "El valor debe ser mayor de o igual a 1" in elem1.get_attribute("validationMessage")
+        assert "El valor debe ser superior o igual a 1" in elem1.get_attribute("validationMessage")
         res = "Test1 éxito"
     except:
         res = "Test1 fallo"
@@ -97,7 +97,7 @@ def test2():
     
     res = ""
     try:
-        assert "El valor debe ser menor de o igual a 99" in elem2.get_attribute("validationMessage")
+        assert "El valor debe ser inferior o igual a 99" in elem2.get_attribute("validationMessage")
         res = "Test2 éxito"
     except:
         res = "Test2 fallo"
