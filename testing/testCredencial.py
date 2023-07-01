@@ -48,7 +48,7 @@ def test1():
 
     res = ""
     try:
-        assert "Ingresa una URL." in elem1.get_attribute("validationMessage")
+        assert "Introduce una URL" in elem1.get_attribute("validationMessage")
         res = "Test1 éxito"
     except:
         res = "Test1 fallo"
