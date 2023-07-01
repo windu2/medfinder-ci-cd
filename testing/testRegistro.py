@@ -45,13 +45,13 @@ def test1():
     # Assume the button has the ID "submit" :)
     elem.send_keys(Keys.ENTER)
 
-    time.sleep(2.3)
+    time.sleep(1.0)
 
     alert = driver.switch_to.alert
     alert.accept()
 
     driver.get(route + "/directory")
-    time.sleep(2.3)
+    time.sleep(1.0)
     elem = driver.find_element(By.ID, "search")
     elem.send_keys("Evaristo")
     
@@ -104,13 +104,13 @@ def test2():
     # Assume the button has the ID "submit" :)
     elem.send_keys(Keys.ENTER)
 
-    time.sleep(2.3)
+    time.sleep(1.0)
 
     alert = driver.switch_to.alert
     alert.accept()
 
     driver.get(route + "/directory")
-    time.sleep(2.3)
+    time.sleep(1.0)
     elem = driver.find_element(By.ID, "search")
     elem.send_keys("Evaristo")
     

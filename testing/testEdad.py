@@ -142,7 +142,7 @@ def test3():
     # Assume the button has the ID "submit" :)
     elem.send_keys(Keys.ENTER)
 
-    time.sleep(2.3)
+    time.sleep(1.0)
     
     alert = driver.switch_to.alert
 

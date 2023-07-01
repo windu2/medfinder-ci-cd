@@ -32,7 +32,7 @@ def test1():
 
     alert = driver.switch_to.alert
     alert.accept()
-    time.sleep(2.0)
+    time.sleep(1.0)
 
     res = ""
     try:

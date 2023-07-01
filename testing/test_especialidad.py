@@ -46,7 +46,7 @@ def test1():
     # Assume the button has the ID "submit" :)
     elem.send_keys(Keys.ENTER)
 
-    time.sleep(2.3)
+    time.sleep(1.0)
     
     res = ""
     try:
@@ -93,7 +93,7 @@ def test2():
     # Assume the button has the ID "submit" :)
     #elem.send_keys(Keys.ENTER)
 
-    time.sleep(1.3)
+    time.sleep(1.0)
 
     #alert = driver.switch_to.alert
     res = ""
@@ -142,7 +142,7 @@ def test3():
     # Assume the button has the ID "submit" :)
     elem.send_keys(Keys.ENTER)
 
-    time.sleep(2.3)
+    time.sleep(1.0)
     
     res = ""
     try:
